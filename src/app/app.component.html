@@ -10,10 +10,14 @@
         <mat-form-field class="form-field">
           <input matInput formControlName="city" placeholder="Name of City">
         </mat-form-field>
-        <button mat-raised button color="grey">Get
-            <mat-icon>room</mat-icon>
-        </button>
       </form>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item *ngFor="let city of listOfCities">
+          <p mat-line><button mat-raised-button (click)="fetchWeather(city)"> {{ city | uppercase }}</button></p>
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
       <p>
         Temperature: {{ result.temp }} F
       </p>
@@ -28,8 +32,7 @@
       </p>
       <img mat-card-image src="https://s3.amazonaws.com/tinycards/image/a288321180dc74ab18c7a693c88ec34d" alt="Photo of a Sky">
 
-      <button mat-raised button color="accent">
-        <mat-icon>clear</mat-icon>Clear
-      </button>
+    
   </mat-card-content>
 </mat-card>
+

@@ -1,0 +1,22 @@
+<mat-list role="list" fxLayout="column">
+  <h2 mat-subheader class="subheader">City</h2>
+  <form  #cityForm="ngForm">
+    <div fxLayout="row">
+    <mat-form-field>
+      <input type="text" name='cityName' placeholder="Name of City" required ngModel matInput>
+      <mat-hint>Enter the name of the city</mat-hint>
+      <mat-error>Please enter the correct name of country</mat-error>
+      </mat-form-field>
+      <div>
+        <mat-list-item *ngFor="let city of listofCities">
+          <p mat-line>
+          <button type="button" mat-raised button color="grey"
+          (click)="fetchWeather(city)"> {{ city | uppercase }}
+       </button>
+      </p>
+   </mat-list-item>
+      </div>
+  
+</div>
+</form>
+</mat-list>

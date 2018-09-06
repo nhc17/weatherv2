@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Weatherv2Service  } from './weatherv2.service'
+
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,8 @@ export class AppComponent {
 
   desc = '';
 
+  listOfCities = [];
+
   searchForm = new FormGroup(
     {
       city: new FormControl(''),
@@ -37,12 +41,30 @@ export class AppComponent {
 
   debounce.subscribe(changes => {
     console.log(changes);
-    this.weatherV2Service.getWeather(changes)
+    this.weatherV2Service
+       .addCity(changes)
+       .subscribe((data)=>{
+         console.log(data);
+         this.weatherV2Service.getCities().subscribe((cities) => {
+           console.log(cities);
+           this.listOfCities = cities;
+         })
+       });
+      });
+    }
+    
+    
+    
+    
+    fetchWeather(city){
+    this.weatherV2Service.getWeather(city)
       .subscribe((data: any) => {
         console.log(data);
         this.result = data.main;
         this.desc = data.weather[0].description;
-  })
-  });
-  }
-}
+    })
+ 
+  } 
+   
+ }
+
