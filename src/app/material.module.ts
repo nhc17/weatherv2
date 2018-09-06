@@ -8,6 +8,8 @@ import {
     MatInputModule,
     MatButtonModule,
     MatListModule,
+    MatMenuModule,
+    
  } from '@angular/material';
 
  import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,6 +22,7 @@ import {
     MatInputModule,
     MatButtonModule,
     MatListModule,
+    MatMenuModule,
     FlexLayoutModule
  ];
 

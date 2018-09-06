@@ -1,3 +1,9 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item ><a routerLink="/Dog">Dog</a></button>
+  <button mat-menu-item (click)="navigateToCity()">City</button>
+</mat-menu>
+
 <mat-toolbar>Weather Forecast</mat-toolbar>
 <mat-card>
   <mat-card-header>
@@ -36,3 +42,4 @@
   </mat-card-content>
 </mat-card>
 
+<router-outlet></router-outlet>

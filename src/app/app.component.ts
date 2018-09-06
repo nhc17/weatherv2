@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Weatherv2Service  } from './weatherv2.service'
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,9 @@ export class AppComponent {
     }
   );
 
-  constructor(private weatherV2Service: Weatherv2Service) { }
+  constructor(
+    private weatherV2Service: Weatherv2Service,
+    private route: Router) { }
 
   ngOnInit(){
   const cityField =this.searchForm.get('city');
@@ -63,8 +66,12 @@ export class AppComponent {
         this.result = data.main;
         this.desc = data.weather[0].description;
     })
- 
+  }
+
+    navigateToCity(){
+      this.route.navigate(['/City'])
+    }
   } 
    
- }
+ 
 
